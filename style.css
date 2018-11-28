@@ -1,0 +1,136 @@
+html {
+    height: 100%;
+  }
+
+body {
+    background-color:#404B50 !important;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.table {
+    background-color: #303a40 !important;
+}
+
+
+#content {
+    color:white;
+    min-height: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ;
+    text-align: justify;
+     
+}
+
+#right_bar{
+    Color:white;
+    min-height: 100%;
+
+}
+
+#left_bar {
+    min-height: 100%;
+    color:white;
+
+}
+
+#menu {
+    text-align: center; 
+    min-height: 3%;
+    border-bottom:solid 3px whitesmoke;
+    display: block; 
+
+}
+
+#SubMenu {
+    text-align: center; 
+    padding-top: 4%;
+    min-height: 3.5%;
+    border-bottom:solid 1px whitesmoke;
+    display: block; 
+}
+
+#accordion h3 {
+    background-color: #303a40;
+    color:white;
+    border-color: black;
+}
+
+#accordion  div {
+    border-color:black;
+    background-color:#404B50;
+    color:white;
+}
+
+#tabs {
+    background-color:#404B50;
+    border-color:black;
+}
+
+#tabs ul {
+    background-color: #303a40;
+    border-color: black;
+    
+}
+
+#tabs a {
+    color:white;
+}
+
+#tabs li {
+    background-color: #404B50;
+    color:white;
+    border-color: black;
+}
+
+#tabs-2 {
+    color:white;
+}
+
+#WindowDialog{
+    display: none;
+}
+
+#tabs p {
+    color:white;
+}
+
+#amount{
+    background-color: #404B50;
+}
+
+.alert {
+    
+    background:#a94442 !important;
+    
+}
+
+
+#SubMenu:hover {
+    background-color: #303a40;
+    opacity: 10%;
+    padding-bottom: 2px;
+}
+
+a.SubLink{
+    text-decoration: none !important;
+    color:white !important;
+}
+
+
+.ui-datepicker-calendar a.ui-state-default {
+     background: #343a40;
+}
+
+.ui-datepicker-current-day {
+    background: blue !important;
+}
+.footer {
+    text-align: center;
+    color: whitesmoke;
+    background-color:#343a40;
+    width: 100%;
+    padding:0.5%;
+  }
+
+
