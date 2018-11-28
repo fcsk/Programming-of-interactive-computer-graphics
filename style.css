@@ -99,6 +99,10 @@ body {
     background-color: #404B50;
 }
 
+#dialogGame {
+    color:white;
+}
+
 .alert {
     
     background:#a94442 !important;

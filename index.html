@@ -8,7 +8,7 @@
   <title>Konrad Gaj Projekt</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <link rel="stylesheet" type="text/css" media="screen" href="style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
@@ -17,251 +17,16 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-  <script>
-    $(document).ready(function(){
 
-      var AnimateAccordion = {
-        easing: "easeInOutCirc",
-        duration: 1000,
-      }
-
-      $( "#accordion" ).accordion({
-        animate: AnimateAccordion,
-      });
-
-      
-    /******************************/
-     
-      var tabTitle = $( "#tab_title" ),
-      tabContent = $( "#tab_content" ),
-      tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
-      tabCounter = 4;
- 
-    var tabs = $( "#tabs" ).tabs();
- 
-    // Modal dialog init: custom buttons and a "close" callback resetting the form inside
-    var dialog = $( "#dialog" ).dialog({
-      autoOpen: false,
-      modal: true,
-      buttons: {
-        Add: function() {
-          addTab();
-          $( this ).dialog( "close" );
-        },
-        Cancel: function() {
-          $( this ).dialog( "close" );
-        }
-      },
-      close: function() {
-        form[ 0 ].reset();
-      }
-    });
- 
-    // AddTab form: calls addTab function on submit and closes the dialog
-    var form = dialog.find( "form" ).on( "submit", function( event ) {
-      addTab();
-      dialog.dialog( "close" );
-      event.preventDefault();
-    });
- 
-    // Actual addTab function: adds new tab using the input from the form above
-    function addTab() {
-      var label = tabTitle.val() || "Tab " + tabCounter,
-        id = "tabs-" + tabCounter,
-        li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
-        tabContentHtml = tabContent.val() || "Tab " + tabCounter + " content.";
- 
-      tabs.find( ".ui-tabs-nav" ).append( li );
-      tabs.append( "<div id='" + id + "'><p>" + tabContentHtml + "</p></div>" );
-      tabs.tabs( "refresh" );
-      tabCounter++;
-    }
- 
-    // AddTab button: just opens the dialog
-    $( "#add_tab" )
-      .button()
-      .on( "click", function() {
-        dialog.dialog( "open" );
-      });
- 
-    // Close icon: removing the tab on click
-    tabs.on( "click", "span.ui-icon-close", function() {
-      var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
-      $( "#" + panelId ).remove();
-      tabs.tabs( "refresh" );
-    });
- 
-    tabs.on( "keyup", function( event ) {
-      if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
-        var panelId = tabs.find( ".ui-tabs-active" ).remove().attr( "aria-controls" );
-        $( "#" + panelId ).remove();
-        tabs.tabs( "refresh" );
-      }
-    });
-/**********************************************************/
-      $("#newDataTable").click(function(){
-        $("#WindowDialog").dialog()
-      });
-
-      $("#CancelNewDataTable").click(function(){
-          $("#WindowDialog").dialog('close')
-        });
-      
-      $("#SaveNewDataTable").click(function(){
-          var fname=$("#FirstName").val();
-          var lname=$("#LastName").val();
-          var pnumber=$("#PhoneNumber").val();
-
-          var FnameTD = document.createElement("td");
-          var lnameTD = document.createElement("td");
-          var pnumberTD = document.createElement("td");
-
-          FnameTD.append(fname);
-          lnameTD.append(lname);
-          pnumberTD.append(pnumber);
-
-          var tr = document.createElement("tr");
-
-          tr.append(FnameTD);
-          tr.append(lnameTD);
-          tr.append(pnumberTD);
-
-          var table = document.getElementById("personalTable");
-          table.append(tr);
-
-          $("#FirstName").val('');
-          $("#LastName").val('');
-          $("#PhoneNumber").val('');
-      });
-
-    $( ".controlgroup" ).controlgroup()
-    $( ".controlgroup-vertical" ).controlgroup({
-      "direction": "vertical"
-    });
-
-   
-    var state = [
-   "dolnośląskie",
-	 "kujawsko-pomorskie",
-	 "lubelskie",
-	 "lubuskie",
-	 "łódzkie",
-	 "małopolskie",
-	 "mazowieckie",
-	 "opolskie",
-	 "podkarpackie",
-	 "podlaskie",
-	 "pomorskie",
-   "śląskie",
-	 "świętokrzyskie",
-	 "warmińsko-mazurskie",
-	 "wielkopolskie",
-	 "zachodniopomorskie"
-      
-    ];
-    $( "#tags" ).autocomplete({
-      source: state
-    }); 
-
-    $( "#FirstRegisterDate" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-    $( "#PurchaseDate" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
-
-    $("#PurchaseDate , #FirstRegisterDate").change(function(){
-      var firstRegister= $("#FirstRegisterDate").val();
-      var purchaseCar = $("#PurchaseDate").val();
+  <script src="main.js"></script>
 
 
-      if(firstRegister >= purchaseCar)
-      {
-        AlertData();
-      }
-      else
-      {
-        TurnOffAlertData();
-      }
-      });
-
-    function AlertData () {
-      $("#datealert").slideDown(700, function (){
-        setTimeout(function(){
-        },3000);
-      })
-    }
-
-    function TurnOffAlertData(){
-      $("#datealert").slideUp(700);
-    }
-
-    $( "#games" ).selectmenu();
-
-    $( "#slider-range-min" ).slider({
-      range: "min",
-      value: 37,
-      min: 1,
-      max: 250,
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.value );
-      }
-    });
-
-
-    $( "#currency" ).on( "change", function() {
-      $( "#spinner" ).spinner( "option", "culture", $( this ).val() );
-    });
- 
-    $( "#spinner" ).spinner({
-      min: 160,
-      max: 2500,
-      step: 5,
-      start: 1000,
-      numberFormat: "C"
-    });
-
-
-    $("#PurchaseGame").click(function(){
-        var TitleGame = $("#games").val();
-        var AuctionCost = $("#amount").val();
-        var GamePrice = $("#spinner").val();
-        var currencyGame = $("#currency").val();
-
-        if (AuctionCost == null) {
-
-        }
-        
-
-      if (currencyGame == "de-DE")
-      {
-        currencyGame="€";
-      }
-      else
-      {
-        currencyGame="$";
-      }
-        
-        alert('Zakupiłeś: '+ TitleGame + 'Licytujesz za: '+
-              AuctionCost + '. Chcesz kupić za: '+ GamePrice + ' '+ currencyGame);
-
-
-    });
-
-
-    });
-  </script>
- 
-  
 
 </head>
 
 <body>
 
-<!--********************************************************NAVBAR******************************************************************************-->
+  <!--********************************************************NAVBAR******************************************************************************-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a class="navbar-brand" href="#">Konrad Gaj </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -292,7 +57,7 @@
 
   <!--********************************************************CONTAINER*******************************************************************************-->
   <div class="container">
-    
+
     <div class="row">
 
 
@@ -307,7 +72,7 @@
           <a href="http://iisi.pcz.pl/" class="SubLink">
             <div>Strona instytutu</div>
           </a>
-            </div>
+        </div>
         <div id="SubMenu">
           <a href="https://github.com/fcsk" class="SubLink">
             <div>GitHub</div>
@@ -337,60 +102,60 @@
 
 
         <div id="accordion">
-					<h3>One</h3>
-					<div>
-						<p>
-						Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-						ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-						amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-						odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-						</p>
-					</div>
-					<h3>Two</h3>
-					<div>
-						<p>
-						Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-						purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-						velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-						suscipit faucibus urna.
-						</p>
-					</div>
-					<h3>Three</h3>
-					<div>
-						<p>
-						Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-						Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-						ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-						lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-						</p>
-						
-					</div>
-					<h3>Four</h3>
-					<div>
-						<p>
-						Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-						et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-						faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-						mauris vel est.
-						</p>
-					</div>
-        </div>	
-        <div id="dialog" title="Tab data">
-            <form>
-              <fieldset class="ui-helper-reset">
-                <label for="tab_title">Title</label>
-                <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
-                <label for="tab_content">Content</label>
-                <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
-              </fieldset>
-            </form>
+          <h3>One</h3>
+          <div>
+            <p>
+              Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+              ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+              amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+              odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+            </p>
           </div>
+          <h3>Two</h3>
+          <div>
+            <p>
+              Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+              purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+              velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+              suscipit faucibus urna.
+            </p>
+          </div>
+          <h3>Three</h3>
+          <div>
+            <p>
+              Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+              Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+              ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+              lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+            </p>
 
-          
+          </div>
+          <h3>Four</h3>
+          <div>
+            <p>
+              Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+              et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+              faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+              mauris vel est.
+            </p>
+          </div>
+        </div>
+        <div id="dialog" title="Tab data">
+          <form>
+            <fieldset class="ui-helper-reset">
+              <label for="tab_title">Title</label>
+              <input type="text" name="tab_title" id="tab_title" value="Tab Title" class="ui-widget-content ui-corner-all">
+              <label for="tab_content">Content</label>
+              <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all">Tab content</textarea>
+            </fieldset>
+          </form>
+        </div>
+
+
         <div id="tabs">
-           
-               
-          
+
+
+
           <ul>
             <li><a href="#tabs-1">Personal Data</a></li>
             <li><a href="#tabs-2">Rejstracja Samochodu</a></li>
@@ -399,45 +164,48 @@
           </ul>
           <div id="tabs-1">
 
-              <table class="table table-hover table-dark" id="personalTable">
-                  <thead>
-                    <tr>
-                      <th scope="col">First Name</th>
-                      <th scope="col">Last name</th>
-                      <th scope="col">Phone number</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>231-183-215</td>
-                    </tr>
-                    <tr>
-                    
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>795-138-965</td>
-                    </tr>
-                    <tr>
-                      <td >Larry</td>
-                      <td>Bird</td>
-                      <td>695-188-265</td>
-                    </tr>
-                  </tbody>
-                </table>
+            <table class="table table-dark" id="personalTable">
+              <thead>
+                <tr>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last name</th>
+                  <th scope="col">Phone number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>231-183-215</td>
+                </tr>
+                <tr>
 
-                <button type="button" class="btn btn-dark" id="newDataTable">Add new Data</button>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>795-138-965</td>
+                </tr>
+                <tr>
+                  <td>Larry</td>
+                  <td>Bird</td>
+                  <td>695-188-265</td>
+                </tr>
+              </tbody>
+            </table>
 
-                <div id="WindowDialog" title="Wprowadz osobe">
-                    First Name<input id="FirstName" type="text"><br>
-                    Last Name<input id="LastName" type="text"><br>
-                    Phone Number<input id="PhoneNumber" type="text"><br>
-                    <br>
-                    <button type="button" class="btn btn-dark" id="SaveNewDataTable">Zapisz</button>
-                    <button type="button" class="btn btn-dark" id="CancelNewDataTable">Anuluj</button>
-                  </div>
-                
+            <button type="button" class="btn btn-dark" id="newDataTable">Add new Data</button>
+
+            <div id="WindowDialog" title="Wprowadz osobe">
+              <label>First Name</label>
+              <input id="FirstName" type="text"><br>
+              <label></label>Last Name</label>
+              <input id="LastName" type="text"><br>
+              <label> Phone Number</label>
+              <input id="PhoneNumber" type="text"><br>
+              <br>
+              <button type="button" class="btn btn-dark" id="SaveNewDataTable">Zapisz</button>
+              <button type="button" class="btn btn-dark" id="CancelNewDataTable">Anuluj</button>
+            </div>
+
           </div>
           <div id="tabs-2">
             <div class="widget">
@@ -446,67 +214,76 @@
                 <legend>Podaj dane:</legend>
                 <div class="controlgroup">
 
-                    <div class="ui-widget">
-                        <label for="tags">Województwo: </label>
-                        <input id="tags"><br>
-                      
-                        Pierwsza Rejstracja Samochodu: <div class="calendar" id="FirstRegisterDate"></div>
-                        Data Nabycia Samochodu:<div  class="calendar" id="PurchaseDate" ></div>
-                        <br>
-                        <div class="alert alert-danger" id="datealert" role="alert" style="display: none;">
-                        
-                          
-                        
-                        <strong><p>Data zakupu nie może być wcześniejsza niż data pierwszej rejestracji.</p></strong>
-                        
-                        </div>
-                        <button type="button" class="btn btn-dark">Bierz na Lawete!</button>
+                  <div class="ui-widget">
+                    <label for="tags">Województwo: </label>
+                    <input id="tags"><br>
+
+                    Pierwsza Rejstracja Samochodu: <div class="calendar" id="FirstRegisterDate"></div>
+                    Data Nabycia Samochodu:<div class="calendar" id="PurchaseDate"></div>
+                    <br>
+                    <div class="alert alert-danger" id="datealert" role="alert" style="display: none;">
+
+
+
+                      <strong>
+                        <p>Data zakupu nie może być wcześniejsza niż data pierwszej rejestracji.</p>
+                      </strong>
+
+                    </div>
+                    <button type="button" class="btn btn-dark">Bierz na Lawete!</button>
                   </div>
-                </fieldset>
+              </fieldset>
             </div>
           </div>
           <div id="tabs-3">
-              <div class="demo">
- 
-                  <form action="#">
-                    <fieldset>
-                      <label for="games"><p>Wybierz grę do licytacji:</p></label>
-                      <select name="speed" id="games">
-                        <option>GTA V</option>
-                        <option>Rainbow Six: Siege</option>
-                        <option>League of Legends</option>
-                        <option>Fifa 19</option>
-                        <option>Battlefield V</option>
-                      </select>
-                  </form>
-                </div>
-                <p>
-                    <label for="amount">Licytuj:</label>
-                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                </p>
-                  <div id="slider-range-min"></div>
-                  <br>
+            <div class="demo">
 
-                  <p>
-                      <label for="spinner">Zakup grę:</label>
-                      <input id="spinner" name="spinner" value="5">
-                    </p>
-                     
-                    <p>
-                      <label for="currency">Wybierz walutę</label>
-                      <select id="currency" name="currency">
-                        <option value="en-US">US $</option>
-                        <option value="de-DE">EUR €</option>
+              <form action="#">
+                <fieldset>
+                  <label for="games">
+                    <p>Wybierz grę do licytacji:</p>
+                  </label>
+                  <select name="speed" id="games">
+                    <option>GTA V</option>
+                    <option>Rainbow Six: Siege</option>
+                    <option>League of Legends</option>
+                    <option>Fifa 19</option>
+                    <option>Battlefield V</option>
+                  </select>
+              </form>
+            </div>
+            <p>
+              <label for="amount">Licytuj:</label>
+              <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" value="0">
+            </p>
+            <div id="slider-range-min"></div>
+            <br>
 
-                        <button type="button" class="btn btn-dark">Potwierdź!</button>
+            <p>
+              <label for="spinner">Zakup grę za $ :</label>
+              <input id="spinner" name="spinner" value="160">
+            </p>
 
-                      </select>
-                    </p>
-                    <button type="button" class="btn btn-dark" id="PurchaseGame">Potwierdź!</button>          
+            <button type="button" class="btn btn-dark" id="PurchaseGame">Potwierdź!</button>
+            <div id="dialogGame" title="Zakupiona Gra" style="display:none">
+              <table class="table table-hover" id="GameTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Tytuł Gry</th>
+                    <th scope="col">Licytacja</th>
+                    <th scope="col">Zakup</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+
+            </div>
           </div>
-          
+
         </div>
-        
+
       </div>
 
       <div class="col-sm-3" id="right_bar">
@@ -514,11 +291,11 @@
       </div>
 
       <!--********************************************************FOOTER*******************************************************************************-->
-      
+
       <footer class="footer col">Konrad Gaj</footer>
-  
-       </div>
-      </div>
+
+    </div>
+  </div>
 
 </body>
 
