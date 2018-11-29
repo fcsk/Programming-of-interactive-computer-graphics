@@ -101,27 +101,26 @@ $(document).ready(function () {
         var fname = $("#FirstName").val();
         var lname = $("#LastName").val();
         var pnumber = $("#PhoneNumber").val();
-
+    
         var FnameTD = document.createElement("td");
         var lnameTD = document.createElement("td");
         var pnumberTD = document.createElement("td");
-
+    
         FnameTD.append(fname);
         lnameTD.append(lname);
         pnumberTD.append(pnumber);
-
+    
         var tr = document.createElement("tr");
-
+    
         tr.append(FnameTD);
         tr.append(lnameTD);
         tr.append(pnumberTD);
-
-        var table = document.getElementById("personalTable");
-        table.append(tr);
-
+        $(tr).appendTo($("#personalTable"));
+        $("#personalTable tbody").append(tr);
         $("#FirstName").val('');
         $("#LastName").val('');
         $("#PhoneNumber").val('');
+        addEventsToRow(tr);                   // Here you will add your events to your new row
     });
 
     $(".controlgroup").controlgroup()
@@ -227,7 +226,7 @@ $(document).ready(function () {
                 maxWidth: 600,
                 height: 'auto',
                 modal: true,
-                fluid: true, //new option
+                fluid: true, 
                 resizable: false
             });
 
@@ -251,29 +250,41 @@ $(document).ready(function () {
         }
     });
 
+    function addEventsToRow(tr)
+{
+
+    let checkBox = document.getElementById("ChangeColorRow");
+    tr.addEventListener('mouseover',function(e){
+        $(this).css('height','40px');
+        $(this).css('background','orange');
+        $(this).css('transform','scale(1.05)');
+        $(this).css('font-size','18px');  
+         
+    })
+
+    tr.addEventListener('mouseout',function(e){
+            $(this).css('height','');
+            $(this).css('background','');
+            $(this).css('transform','');
+            $(this).css('font-size','15px');
+              
+        }) }
+
+// here  add  events to  tables default rows.
+var tablerows = $('tr').not(":first");
+for(var i= 0; i <tablerows.length; i+=1) addEventsToRow( tablerows[i])  
 
 
+       
+       
+   
 
-    $("tr").not(':odd, :first').hover(
 
-        function () {
-            $(this).css("background", "green");
-        },
-        function () {
-            $(this).css("background", "");
-        },
-        function () {
-            $("tr:nth-child(odd)").css("background", "green");
-        },
-    );
+   
 
-    $("tr").not(':even, :first').hover(
-        function () {
-            $(this).css("background", "#17a2b8");
-        },
-        function () {
-            $(this).css("background", "");
-        }
-    );
+   
+    
+
+   
 
 });

@@ -18,7 +18,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <script src="main.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script>
+  function ColorRow()
+{
+    var checkBox = document.getElementById("ChangeColorRow");
+    if (checkBox.checked == true){
+        $("tr:nth-child(even):not(:first-child)").css("background-color","#0077b5");
+        $("tr:nth-child(odd):not(:first)").css("background-color","#17a2b8");
+      } else {
+        $("tr:nth-child(even):not(:first-child)").css("background-color","");
+        $("tr:nth-child(odd):not(:first)").css("background-color","");
+      }
+}
+  </script>
 
 
 
@@ -43,10 +56,7 @@
           <a class="nav-link" href="#">GitHub</a>
         </li>
     </div>
-
   </nav>
-
-
   <!--********************************************************JUMBOTRON*******************************************************************************-->
   <div class="jumbotron jumbotron-fluid red ">
     <div class="container">
@@ -59,8 +69,6 @@
   <div class="container">
 
     <div class="row">
-
-
       <div class="col-sm-3" id="left_bar">
         <div id="menu">Menu</div>
         <div id="SubMenu">
@@ -78,12 +86,7 @@
             <div>GitHub</div>
           </a>
         </div>
-
-
       </div>
-
-
-
       <div class="col-sm-6  " id="content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum nisl non pulvinar efficitur. Maecenas vel
         lorem est. Nulla blandit sit amet ligula ac molestie. Nunc eget pharetra enim. Lorem ipsum dolor sit amet,
@@ -99,8 +102,6 @@
         hendrerit nec odio. Mauris malesuada orci turpis, tristique feugiat velit volutpat sit amet. Pellentesque
         aliquam metus libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam vitae quam in dui
         facilisis feugiat.
-
-
         <div id="accordion">
           <h3>One</h3>
           <div>
@@ -150,12 +151,7 @@
             </fieldset>
           </form>
         </div>
-
-
         <div id="tabs">
-
-
-
           <ul>
             <li><a href="#tabs-1">Personal Data</a></li>
             <li><a href="#tabs-2">Rejstracja Samochodu</a></li>
@@ -191,6 +187,12 @@
                 </tr>
               </tbody>
             </table>
+            
+            <label id="checkboxTable"><p>Zmień kolory w tabeli</p>
+              <input type="checkbox" id="ChangeColorRow" onclick="ColorRow()">
+              <span class="checkmark"></span>
+            </label>
+            
 
             <button type="button" class="btn btn-dark" id="newDataTable">Add new Data</button>
 
@@ -222,8 +224,6 @@
                     Data Nabycia Samochodu:<div class="calendar" id="PurchaseDate"></div>
                     <br>
                     <div class="alert alert-danger" id="datealert" role="alert" style="display: none;">
-
-
 
                       <strong>
                         <p>Data zakupu nie może być wcześniejsza niż data pierwszej rejestracji.</p>
