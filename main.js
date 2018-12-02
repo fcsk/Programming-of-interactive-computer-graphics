@@ -26,6 +26,7 @@ $(document).ready(function () {
     var dialog = $("#dialog").dialog({
         autoOpen: false,
         modal: true,
+        
         buttons: {
             Add: function () {
                 addTab();
@@ -89,7 +90,15 @@ $(document).ready(function () {
             height: 'auto',
             modal: true,
             fluid: true, //new option
-            resizable: false
+            resizable: false,
+            show: {
+                effect: "explode",
+                duration: 1000
+            },
+            hide: {
+                effect: "explode",
+                duration: 1000
+            }
         });
     });
 
@@ -115,12 +124,14 @@ $(document).ready(function () {
         tr.append(FnameTD);
         tr.append(lnameTD);
         tr.append(pnumberTD);
-        $(tr).appendTo($("#personalTable"));
+        $(tr).appendTo($("#personalTable"));    
         $("#personalTable tbody").append(tr);
         $("#FirstName").val('');
         $("#LastName").val('');
         $("#PhoneNumber").val('');
         addEventsToRow(tr);                   // Here you will add your events to your new row
+        
+       
     });
 
     $(".controlgroup").controlgroup()
@@ -227,7 +238,8 @@ $(document).ready(function () {
                 height: 'auto',
                 modal: true,
                 fluid: true, 
-                resizable: false
+                resizable: false,
+                animate: 'easing'
             });
 
             var TitleGameTD = document.createElement("td");
@@ -269,10 +281,20 @@ $(document).ready(function () {
             $(this).css('font-size','15px');
               
         }) }
-
-// here  add  events to  tables default rows.
-var tablerows = $('tr').not(":first");
+        // here  add  events to  tables default rows
+        
+var tablerows = $('#personalTable tr').not(":first");
 for(var i= 0; i <tablerows.length; i+=1) addEventsToRow( tablerows[i])  
+
+
+$('#personalTable tr').not(':first').click(function(){
+    $(this).remove();
+    
+    return false;
+});
+
+
+
 
 
        
