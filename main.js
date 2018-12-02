@@ -26,7 +26,7 @@ $(document).ready(function () {
     var dialog = $("#dialog").dialog({
         autoOpen: false,
         modal: true,
-        
+
         buttons: {
             Add: function () {
                 addTab();
@@ -110,28 +110,38 @@ $(document).ready(function () {
         var fname = $("#FirstName").val();
         var lname = $("#LastName").val();
         var pnumber = $("#PhoneNumber").val();
-    
+
         var FnameTD = document.createElement("td");
         var lnameTD = document.createElement("td");
         var pnumberTD = document.createElement("td");
-    
+
         FnameTD.append(fname);
         lnameTD.append(lname);
         pnumberTD.append(pnumber);
-    
+
         var tr = document.createElement("tr");
-    
+
         tr.append(FnameTD);
         tr.append(lnameTD);
         tr.append(pnumberTD);
-        $(tr).appendTo($("#personalTable"));    
+
+        var button = document.createElement("button");
+        button.className="orange"
+        button.innerHTML = 'X';
+        button.addEventListener ("click", function() {
+            $(this).closest("tr").remove();
+          });
+        tr.appendChild(button);
+    
+        $(tr).appendTo($("#personalTable"));
         $("#personalTable tbody").append(tr);
+        $('#personalTable tbody tr').hide().fadeIn(2000);
         $("#FirstName").val('');
         $("#LastName").val('');
         $("#PhoneNumber").val('');
         addEventsToRow(tr);                   // Here you will add your events to your new row
-        
-       
+
+
     });
 
     $(".controlgroup").controlgroup()
@@ -237,7 +247,7 @@ $(document).ready(function () {
                 maxWidth: 600,
                 height: 'auto',
                 modal: true,
-                fluid: true, 
+                fluid: true,
                 resizable: false,
                 animate: 'easing'
             });
@@ -262,51 +272,37 @@ $(document).ready(function () {
         }
     });
 
-    function addEventsToRow(tr)
-{
+    function addEventsToRow(tr) {
 
-    let checkBox = document.getElementById("ChangeColorRow");
-    tr.addEventListener('mouseover',function(e){
-        $(this).css('height','40px');
-        $(this).css('background','orange');
-        $(this).css('transform','scale(1.05)');
-        $(this).css('font-size','18px');  
-         
-    })
+        let checkBox = document.getElementById("ChangeColorRow");
+        tr.addEventListener('mouseover', function (e) {
+            $(this).css('height', '40px');
+            $(this).css('background', 'orange');
+            $(this).css('transform', 'scale(1.05)');
+            $(this).css('font-size', '18px');
+            $("orange").css('background', 'orange');
 
-    tr.addEventListener('mouseout',function(e){
-            $(this).css('height','');
-            $(this).css('background','');
-            $(this).css('transform','');
-            $(this).css('font-size','15px');
-              
-        }) }
-        // here  add  events to  tables default rows
-        
-var tablerows = $('#personalTable tr').not(":first");
-for(var i= 0; i <tablerows.length; i+=1) addEventsToRow( tablerows[i])  
+        })
 
+        tr.addEventListener('mouseout', function (e) {
+            $(this).css('height', '');
+            $(this).css('background', '');
+            $(this).css('transform', '');
+            $(this).css('font-size', '15px');
+            $("orange").css('background', '');
 
-$('#personalTable tr').not(':first').click(function(){
-    $(this).remove();
-    
-    return false;
-});
+        })
+    }
+    // here  add  events to  tables default rows
+
+    var tablerows = $('#personalTable tr').not(":first");
+    for (var i = 0; i < tablerows.length; i += 1) addEventsToRow(tablerows[i])
 
 
+    $('#personalTable tr').not(':first').click(function () {
+        $(this).closest("tr").remove();
 
-
-
-       
-       
-   
-
-
-   
-
-   
-    
-
-   
+        return false;
+    });
 
 });

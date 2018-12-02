@@ -20,17 +20,16 @@
 
   <script type="text/javascript" src="main.js"></script>
   <script>
-  function ColorRow()
-{
-    var checkBox = document.getElementById("ChangeColorRow");
-    if (checkBox.checked == true){
-        $("tr:nth-child(even):not(:first-child)").css("background-color","#0077b5");
-        $("tr:nth-child(odd):not(:first)").css("background-color","#17a2b8");
+    function ColorRow() {
+      var checkBox = document.getElementById("ChangeColorRow");
+      if (checkBox.checked == true) {
+        $("tr:nth-child(even):not(:first-child)").css("background-color", "#0077b5");
+        $("tr:nth-child(odd):not(:first)").css("background-color", "#17a2b8");
       } else {
-        $("tr:nth-child(even):not(:first-child)").css("background-color","");
-        $("tr:nth-child(odd):not(:first)").css("background-color","");
+        $("tr:nth-child(even):not(:first-child)").css("background-color", "");
+        $("tr:nth-child(odd):not(:first)").css("background-color", "");
       }
-}
+    }
   </script>
 
 
@@ -169,36 +168,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>231-183-215</td>
-                </tr>
-                <tr>
-
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>795-138-965</td>
-                </tr>
-                <tr>
-                  <td>Larry</td>
-                  <td>Bird</td>
-                  <td>695-188-265</td>
-                </tr>
               </tbody>
             </table>
-            
-            <label id="checkboxTable"><p>Zmień kolory w tabeli</p>
+
+            <label id="checkboxTable">
+              <p>Zmień kolory w tabeli</p>
               <input type="checkbox" id="ChangeColorRow" onclick="ColorRow()">
               <span class="checkmark"></span>
             </label>
-
-            <p>Aby usunąć wiersz najedź na niego i kliknij</p>
-            
-
+            <p>Aby usunąć wiersz dodany "na sztywno" najedź na niego i kliknij</p>
             <button type="button" class="btn btn-dark" id="newDataTable">Add new Data</button>
-            
-
             <div id="WindowDialog" title="Wprowadz osobe">
               <label>First Name</label>
               <input id="FirstName" type="text"><br>
