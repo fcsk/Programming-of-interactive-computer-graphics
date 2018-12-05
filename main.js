@@ -1,4 +1,5 @@
 
+//Konrad Gaj
 $(document).ready(function () {
 
 
@@ -304,5 +305,22 @@ $(document).ready(function () {
 
         return false;
     });
+
+    $("#kalendarz").datepicker();
+
+     
+    
+    $("#left_bar").sortable({
+        revert: true,
+        connectWith: '#right_bar'
+    }).disableSelection();
+    $("#right_bar").sortable({
+        connectWith: '#left_bar',
+        revert: true,
+    }).disableSelection();
+  
+
+      
+    
 
 });

@@ -22,8 +22,9 @@ body {
 }
 
 #right_bar{
-    Color:white;
+    color:white !important;
     min-height: 100%;
+    
 
 }
 
@@ -33,19 +34,29 @@ body {
 
 }
 
-#menu {
+.menu {
     text-align: center; 
-    min-height: 3%;
-    border-bottom:solid 3px whitesmoke;
+    min-height: 4%;
+    border-bottom:solid 1.5px whitesmoke;
+    border-top:solid 1.5px whitesmoke;
     display: block; 
 
 }
 
-#SubMenu {
+.SubMenu {
     text-align: center; 
     padding-top: 4%;
+    padding-bottom: 4%;
     min-height: 3.5%;
-    border-bottom:solid 1px whitesmoke;
+    display: block; 
+}
+
+.SubMenu:hover {
+    background-color: #303a40;
+    opacity: 10%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    min-height: 3.5%;
     display: block; 
 }
 
@@ -106,13 +117,6 @@ body {
     
     background:#a94442 !important;
     
-}
-
-
-#SubMenu:hover {
-    background-color: #303a40;
-    opacity: 10%;
-    padding-bottom: 2px;
 }
 
 a.SubLink{
@@ -215,4 +219,10 @@ a.SubLink{
     display: inline-block;
     font-size: 16px;
   }
+  .ui-datepicker-week-end {
+    color:red;
+}
 
+.ui-widget-content a {
+	color:white !important;
+}

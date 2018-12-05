@@ -2,7 +2,7 @@
 <html>
 
 <head>
-
+<!-- Konrad Gaj -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Konrad Gaj Projekt</title>
@@ -23,11 +23,11 @@
     function ColorRow() {
       var checkBox = document.getElementById("ChangeColorRow");
       if (checkBox.checked == true) {
-        $("tr:nth-child(even):not(:first-child)").css("background-color", "#0077b5");
-        $("tr:nth-child(odd):not(:first)").css("background-color", "#17a2b8");
+        $("#personalTable tr:nth-child(even):not(:first-child)").css("background-color", "#0077b5");
+        $("#personalTable tr:nth-child(odd):not(:first)").css("background-color", "#17a2b8");
       } else {
-        $("tr:nth-child(even):not(:first-child)").css("background-color", "");
-        $("tr:nth-child(odd):not(:first)").css("background-color", "");
+        $("#personalTable tr:nth-child(even):not(:first-child)").css("background-color", "");
+        $("#personalTable tr:nth-child(odd):not(:first)").css("background-color", "");
       }
     }
   </script>
@@ -69,23 +69,39 @@
 
     <div class="row">
       <div class="col-sm-3" id="left_bar">
-        <div id="menu">Menu</div>
-        <div id="SubMenu">
-          <a href="https://wimii.pcz.pl/" class="SubLink">
-            <div>Strona WIMiI</div>
-          </a>
+        
+        <div class="menu">Wydarzenia
+          <div class="SubMenu">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            In mollis tortor nibh, sed fermentum quam scelerisque ac. Ut vestibulum mauris sit amet leo hendrerit
+            congue.
+            Sed feugiat quam nulla, id tempor neque rutrum in.</div>
         </div>
-        <div id="SubMenu">
-          <a href="http://iisi.pcz.pl/" class="SubLink">
-            <div>Strona instytutu</div>
-          </a>
+
+        <div class="menu">Przydatne Linki
+          <div class="SubMenu">
+            <a href="https://wimii.pcz.pl/" class="SubLink">
+              <div>Strona WIMiI</div>
+            </a>
+          </div>
+          <div class="SubMenu">
+            <a href="http://iisi.pcz.pl/" class="SubLink">
+              <div>Strona instytutu</div>
+            </a>
+          </div>
         </div>
-        <div id="SubMenu">
-          <a href="https://github.com/fcsk" class="SubLink">
-            <div>GitHub</div>
-          </a>
-        </div>
+
+        <div class="menu">Najlepiej Oceniono
+          <div class="SubMenu">
+            <ol>
+              <li>VS Code</li>
+              <li>Eclipse</li>
+              <li>Atom</li>
+            </ol>
+          </div>
+        
       </div>
+      </div>
+
       <div class="col-sm-6  " id="content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum nisl non pulvinar efficitur. Maecenas vel
         lorem est. Nulla blandit sit amet ligula ac molestie. Nunc eget pharetra enim. Lorem ipsum dolor sit amet,
@@ -269,7 +285,28 @@
       </div>
 
       <div class="col-sm-3" id="right_bar">
-        <div id="menu">Advertisment Placement </div>
+        
+        <div class="menu">Kalendarz
+            <div id="kalendarz"></div>
+            <br>
+          </div>
+          <div class="menu">Aktualości
+            <div class="SubMenu">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              In mollis tortor nibh, sed fermentum quam scelerisque ac. Ut vestibulum mauris sit amet leo hendrerit
+              congue.
+              Sed feugiat quam nulla, id tempor neque rutrum in.</div>
+          </div>
+          <div class="menu">Nagrody
+            <div class="SubMenu">
+              <ol>
+                <li>Coffee</li>
+                <li>Tea</li>
+                <li>Milk</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      
       </div>
 
       <!--********************************************************FOOTER*******************************************************************************-->
