@@ -36,7 +36,7 @@
 
       var checkBoxSite = document.getElementById("CheckboxSiteInput");
       if (checkBoxSite.checked == true) {
-        $("#sort").show("slow");
+        $("#sort").show(1300);
 
         $("#left_bar").sortable({
           revert: true,
@@ -50,7 +50,7 @@
 
         }).disableSelection();
       } else {
-        $("#sort").hide("slow");
+        $("#sort").hide(1300);
         $("#right_bar").sortable({ disabled: true });
         $("#left_bar").sortable({ disabled: true });
       }
@@ -138,7 +138,7 @@
           <p>
             <i class="material-icons">
               keyboard_arrow_left </i>
-            <i>Przeciągaj elementy column</i>
+            <i>Przeciągaj elementy Kolumn</i>
 
             <i class="material-icons">
               keyboard_arrow_right
@@ -272,11 +272,14 @@
                     <div class="alert alert-danger" id="datealert" role="alert" style="display: none;">
 
                       <strong>
-                        Data zakupu nie może być wcześniejsza niż data pierwszej rejestracji.
+                        Data zakupu nie może być wcześniejsza niż data pierwszej rejestracji lub nie wpisałeś województwa
                       </strong>
 
                     </div>
-                    <button type="button" class="btn btn-dark">Bierz na Lawete!</button>
+                    <div class="btn btn-dark" id="TakeCar">Bierz na Lawete!</div>
+                        <div id="myCarText">
+
+                        </div>
                   </div>
                 </div>
               </fieldset>

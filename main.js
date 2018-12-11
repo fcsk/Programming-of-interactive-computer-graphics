@@ -2,7 +2,6 @@
 //Konrad Gaj
 $(document).ready(function () {
 
-
     var AnimateAccordion = {
         easing: "easeInOutCirc",
         duration: 1000,
@@ -186,16 +185,27 @@ $(document).ready(function () {
         changeYear: true
     });
 
-    $("#PurchaseDate , #FirstRegisterDate").change(function () {
+    $("#TakeCar").click(function ()
+     {  
+         $("#myCarText").empty();
         var firstRegister = $("#FirstRegisterDate").val();
         var purchaseCar = $("#PurchaseDate").val();
+        var pickedState = $("#tags").val();
 
 
-        if (firstRegister >= purchaseCar) {
+        if (firstRegister >= purchaseCar || pickedState=="") {
             AlertData();
         }
         else {
             TurnOffAlertData();
+            $("#myCarText").css('margin', '5px');
+            $("#myCarText").css('border-radius', '25');
+            $("#myCarText").css('font-size', '16px');
+            $("#myCarText").css('font-size', '16px');
+            $("#myCarText").css('border', '2px','solid', 'orange');
+            $("#myCarText").append("Zakupiłeś auto z województwa: " +
+            pickedState+ ". Data Pierwszej rejestracji tego auta to: "+ firstRegister+
+            ". Zakupiłeś to auto: "+purchaseCar+"<br><br>");
         }
     });
 
@@ -313,5 +323,6 @@ $(document).ready(function () {
     $("#kalendarz").datepicker();
 
     $('#tabs').tabs( "option", "show", { effect: "slide", duration: 800 } );
+
 
 });
