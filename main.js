@@ -111,6 +111,9 @@ $(document).ready(function () {
         var fname = $("#FirstName").val();
         var lname = $("#LastName").val();
         var pnumber = $("#PhoneNumber").val();
+        if (fname == ""|| lname=="" || pnumber == ""){
+            alert("Uzupełnij Dane!");
+        } else {
 
         var FnameTD = document.createElement("td");
         var lnameTD = document.createElement("td");
@@ -126,7 +129,7 @@ $(document).ready(function () {
         tr.append(lnameTD);
         tr.append(pnumberTD);
 
-        var button = document.createElement("button");
+        var button = document.createElement("td");
         button.className="orange"
         button.innerHTML = 'X';
         button.addEventListener ("click", function() {
@@ -142,6 +145,7 @@ $(document).ready(function () {
         $("#PhoneNumber").val('');
         addEventsToRow(tr);                   // Here you will add your events to your new row
 
+        }
 
     });
 
@@ -274,23 +278,24 @@ $(document).ready(function () {
     });
 
     function addEventsToRow(tr) {
-
+        var colorTR;
         let checkBox = document.getElementById("ChangeColorRow");
         tr.addEventListener('mouseover', function (e) {
+            colorTR = $(this).css("background-color");
             $(this).css('height', '40px');
             $(this).css('background', 'orange');
-            $(this).css('transform', 'scale(1.05)');
+            $(this).css('transform', 'scale(1.02)');
             $(this).css('font-size', '18px');
-            $("orange").css('background', 'orange');
+            
 
         })
 
         tr.addEventListener('mouseout', function (e) {
             $(this).css('height', '');
-            $(this).css('background', '');
+            $(this).css('background', colorTR);
             $(this).css('transform', '');
             $(this).css('font-size', '15px');
-            $("orange").css('background', '');
+            
 
         })
     }
@@ -301,8 +306,8 @@ $(document).ready(function () {
 
 
     $('#personalTable tr').not(':first').click(function () {
+        
         $(this).closest("tr").remove();
-
         return false;
     });
 
@@ -318,6 +323,7 @@ $(document).ready(function () {
         connectWith: '#left_bar',
         revert: true,
     }).disableSelection();
+    
   
 
       
