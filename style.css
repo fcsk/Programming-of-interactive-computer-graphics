@@ -36,31 +36,6 @@ body {
 
 }
 
-.menu {
-    text-align: center; 
-    min-height: 4%;
-    border-bottom:solid 1.5px whitesmoke;
-    border-top:solid 1.5px whitesmoke;
-    display: block; 
-
-}
-
-.SubMenu {
-    text-align: center; 
-    padding-top: 4%;
-    padding-bottom: 4%;
-    min-height: 3.5%;
-    display: block; 
-}
-
-.SubMenu:hover {
-    background-color: #303a40;
-    opacity: 10%;
-    padding-top: 4%;
-    padding-bottom: 4%;
-    min-height: 3.5%;
-    display: block; 
-}
 
 #accordion h3 {
     background-color: #303a40;
@@ -115,36 +90,18 @@ body {
     color:white;
 }
 
-.alert {
-    
-    background:#a94442 !important;
-    
+#add_tab
+{
+    color:white;
+    background: #303a40;
+    border:#303a40;
+    margin:3px;
 }
-
-a.SubLink{
-    text-decoration: none !important;
-    color:white !important;
-}
-
-
-.ui-datepicker-calendar a.ui-state-default {
-     background: #343a40;
-}
-
-.ui-datepicker-current-day {
-    background: blue !important;
-}
-.footer {
-    text-align: center;
-    color: whitesmoke;
-    background-color:#343a40;
-    width: 100%;
-    padding:0.5%;
-  }
 
 /* Check box css */
 
 #checkboxTable{
+    color:white;
   display: block;
   position: relative;
   padding-left: 35px;
@@ -288,13 +245,62 @@ a.SubLink{
       padding-bottom: 5px;
       display:none;
   }
-  
-  #add_tab
-  {
-      color:white;
-      background: #303a40;
+
+.menu {
+    text-align: center; 
+    min-height: 4%;
+    border-bottom:solid 1.5px whitesmoke;
+    border-top:solid 1.5px whitesmoke;
+    display: block; 
+
+}
+
+.SubMenu {
+    text-align: center; 
+    padding-top: 4%;
+    padding-bottom: 4%;
+    min-height: 3.5%;
+    display: block; 
+}
+
+.SubMenu:hover {
+    background-color: #303a40;
+    opacity: 10%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    min-height: 3.5%;
+    display: block; 
+}
+.alert {
+    
+    background:#a94442 !important;
+    
+}
+
+a.SubLink{
+    text-decoration: none !important;
+    color:white !important;
+}
+
+
+.ui-datepicker-calendar a.ui-state-default {
+     background: #343a40;
+}
+
+.ui-datepicker-current-day {
+    background: blue !important;
+}
+.footer {
+    text-align: center;
+    color: whitesmoke;
+    background-color:#343a40;
+    width: 100%;
+    padding:0.5%;
   }
 
+  .demo {
+      color:white;
+  }
   .orange {
     border: none;
     color: white;
@@ -305,6 +311,7 @@ a.SubLink{
     font-size: 16px;
     cursor: pointer;
   }
+
   .ui-datepicker-week-end {
     color:red;
 }

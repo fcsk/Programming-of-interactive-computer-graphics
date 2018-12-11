@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 
 <head>
   <!-- Konrad Gaj -->
@@ -19,7 +19,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <script type="text/javascript" src="main.js"></script>
+  <script src="main.js"></script>
   <script>
     function ColorRow() {
       var checkBox = document.getElementById("ChangeColorRow");
@@ -34,26 +34,28 @@
 
     function ChangeSite() {
 
-        var checkBoxSite = document.getElementById("CheckboxSiteInput");
-        if (checkBoxSite.checked == true) {
-          $("#sort").show("slow");
-          
-          $("#left_bar").sortable({
-            revert: true,
-            connectWith: '#right_bar'
-          }).disableSelection();
-          $("#right_bar").sortable({
-            connectWith: '#left_bar',
-            revert: true,
-            
-          }).disableSelection();
-        } else {
-          $("#sort").hide("slow");
-          $("#right_bar").sortable("disable");
-          $("#left_bar").sortable("disable");
-        }
+      var checkBoxSite = document.getElementById("CheckboxSiteInput");
+      if (checkBoxSite.checked == true) {
+        $("#sort").show("slow");
+
+        $("#left_bar").sortable({
+          revert: true,
+          connectWith: '#right_bar',
+          disabled: false
+        }).disableSelection();
+        $("#right_bar").sortable({
+          connectWith: '#left_bar',
+          revert: true,
+          disabled: false
+
+        }).disableSelection();
+      } else {
+        $("#sort").hide("slow");
+        $("#right_bar").sortable({ disabled: true });
+        $("#left_bar").sortable({ disabled: true });
       }
-    
+    }
+
 
   </script>
 
@@ -77,9 +79,10 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://gitlab.com/fcsk">GitLab</a>
-          
+          <a class="nav-link" href="https://gitlab.com/fcsk/prog-interaktywnej-grafiki-komputerowej/commits/master">GitLab</a>
+
         </li>
+      </ul>
 
     </div>
   </nav>
@@ -133,17 +136,16 @@
       <div class="col-sm-6  " id="content">
         <div id="sort">
           <p>
-        <i class="material-icons">
-          keyboard_arrow_left </i>
-          <i>Przeciągaj elementy column</i>
+            <i class="material-icons">
+              keyboard_arrow_left </i>
+            <i>Przeciągaj elementy column</i>
 
-        <i class="material-icons">
-          keyboard_arrow_right
-        </p>
-
-        </i>
-        <br>
-      </div>
+            <i class="material-icons">
+              keyboard_arrow_right
+            </i>
+          </p>
+          <br>
+        </div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum nisl non pulvinar efficitur. Maecenas vel
         lorem est. Nulla blandit sit amet ligula ac molestie. Nunc eget pharetra enim. Lorem ipsum dolor sit amet,
         consectetur adipiscing elit. Maecenas interdum lectus eu velit volutpat ultricies. Duis accumsan quam id risus
@@ -159,9 +161,9 @@
         aliquam metus libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam vitae quam in dui
         facilisis feugiat.<br><br>
         <label id="checkboxSite">
-            <p>Zmień układ strony</p>
-            <input type="checkbox" id="CheckboxSiteInput" onclick=ChangeSite(); >
-            <span class="checkmark"></span>
+          Zmień układ strony
+          <input type="checkbox" id="CheckboxSiteInput" onclick=ChangeSite();>
+          <span class="checkmark"></span>
         </label>
         <div id="accordion">
           <h3>One</h3>
@@ -213,11 +215,11 @@
           </form>
         </div>
         <div id="tabs">
+          <div class="btn btn-dark" id="add_tab">Add new Tab</div>
           <ul>
             <li><a href="#tabs-1">Personal Data</a></li>
             <li><a href="#tabs-2">Rejstracja Samochodu</a></li>
             <li><a href="#tabs-3">Licytuj Grę!</a></li>
-            <div type="button" class="btn btn-dark" id="add_tab">+</div>
           </ul>
           <div id="tabs-1">
 
@@ -234,7 +236,7 @@
             </table>
 
             <label id="checkboxTable">
-              <p>Zmień kolory w tabeli</p>
+              Zmień kolory w tabeli
               <input type="checkbox" id="ChangeColorRow" onclick="ColorRow()">
               <span class="checkmark"></span>
             </label>
@@ -243,7 +245,7 @@
             <div id="WindowDialog" title="Wprowadz osobe">
               <label>First Name</label>
               <input id="FirstName" type="text"><br>
-              <label></label>Last Name</label>
+              <label>Last Name</label>
               <input id="LastName" type="text"><br>
               <label> Phone Number</label>
               <input id="PhoneNumber" type="text"><br>
@@ -270,12 +272,13 @@
                     <div class="alert alert-danger" id="datealert" role="alert" style="display: none;">
 
                       <strong>
-                        <p>Data zakupu nie może być wcześniejsza niż data pierwszej rejestracji.</p>
+                        Data zakupu nie może być wcześniejsza niż data pierwszej rejestracji.
                       </strong>
 
                     </div>
                     <button type="button" class="btn btn-dark">Bierz na Lawete!</button>
                   </div>
+                </div>
               </fieldset>
             </div>
           </div>
@@ -285,7 +288,7 @@
               <form action="#">
                 <fieldset>
                   <label for="games">
-                    <p>Wybierz grę do licytacji:</p>
+                    Wybierz grę do licytacji:
                   </label>
                   <select name="speed" id="games">
                     <option>GTA V</option>
@@ -294,6 +297,7 @@
                     <option>Fifa 19</option>
                     <option>Battlefield V</option>
                   </select>
+                </fieldset>
               </form>
             </div>
             <p>
@@ -360,7 +364,7 @@
     <footer class="footer col">Konrad Gaj</footer>
 
   </div>
-  </div>
+
 
 </body>
 

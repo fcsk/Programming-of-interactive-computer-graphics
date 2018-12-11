@@ -312,5 +312,6 @@ $(document).ready(function () {
 
     $("#kalendarz").datepicker();
 
+    $('#tabs').tabs( "option", "show", { effect: "slide", duration: 800 } );
 
 });
