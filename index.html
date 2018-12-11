@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<!-- Konrad Gaj -->
+  <!-- Konrad Gaj -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Konrad Gaj Projekt</title>
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -30,6 +31,30 @@
         $("#personalTable tr:nth-child(odd):not(:first)").css("background-color", "");
       }
     }
+
+    function ChangeSite() {
+
+        var checkBoxSite = document.getElementById("CheckboxSiteInput");
+        if (checkBoxSite.checked == true) {
+          $("#sort").show("slow");
+          
+          $("#left_bar").sortable({
+            revert: true,
+            connectWith: '#right_bar'
+          }).disableSelection();
+          $("#right_bar").sortable({
+            connectWith: '#left_bar',
+            revert: true,
+            
+          }).disableSelection();
+        } else {
+          $("#sort").hide("slow");
+          $("#right_bar").sortable("disable");
+          $("#left_bar").sortable("disable");
+        }
+      }
+    
+
   </script>
 
 
@@ -52,8 +77,10 @@
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">GitHub</a>
+          <a class="nav-link" href="https://gitlab.com/fcsk">GitLab</a>
+          
         </li>
+
     </div>
   </nav>
   <!--********************************************************JUMBOTRON*******************************************************************************-->
@@ -69,7 +96,8 @@
 
     <div class="row">
       <div class="col-sm-3" id="left_bar">
-        
+
+
         <div class="menu">Wydarzenia
           <div class="SubMenu">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             In mollis tortor nibh, sed fermentum quam scelerisque ac. Ut vestibulum mauris sit amet leo hendrerit
@@ -98,11 +126,24 @@
               <li>Atom</li>
             </ol>
           </div>
-        
-      </div>
+
+        </div>
       </div>
 
       <div class="col-sm-6  " id="content">
+        <div id="sort">
+          <p>
+        <i class="material-icons">
+          keyboard_arrow_left </i>
+          <i>Przeciągaj elementy column</i>
+
+        <i class="material-icons">
+          keyboard_arrow_right
+        </p>
+
+        </i>
+        <br>
+      </div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum nisl non pulvinar efficitur. Maecenas vel
         lorem est. Nulla blandit sit amet ligula ac molestie. Nunc eget pharetra enim. Lorem ipsum dolor sit amet,
         consectetur adipiscing elit. Maecenas interdum lectus eu velit volutpat ultricies. Duis accumsan quam id risus
@@ -116,7 +157,12 @@
         blandit dignissim. Nulla maximus ipsum id luctus consectetur. Donec felis nulla, lobortis nec mattis eu,
         hendrerit nec odio. Mauris malesuada orci turpis, tristique feugiat velit volutpat sit amet. Pellentesque
         aliquam metus libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam vitae quam in dui
-        facilisis feugiat.
+        facilisis feugiat.<br><br>
+        <label id="checkboxSite">
+            <p>Zmień układ strony</p>
+            <input type="checkbox" id="CheckboxSiteInput" onclick=ChangeSite(); >
+            <span class="checkmark"></span>
+        </label>
         <div id="accordion">
           <h3>One</h3>
           <div>
@@ -171,7 +217,7 @@
             <li><a href="#tabs-1">Personal Data</a></li>
             <li><a href="#tabs-2">Rejstracja Samochodu</a></li>
             <li><a href="#tabs-3">Licytuj Grę!</a></li>
-            <div type="button"class="btn btn-dark" id="add_tab">+</div>
+            <div type="button" class="btn btn-dark" id="add_tab">+</div>
           </ul>
           <div id="tabs-1">
 
@@ -285,35 +331,35 @@
       </div>
 
       <div class="col-sm-3" id="right_bar">
-        
+
         <div class="menu">Kalendarz
-            <div id="kalendarz"></div>
-            <br>
-          </div>
-          <div class="menu">Aktualości
-            <div class="SubMenu">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              In mollis tortor nibh, sed fermentum quam scelerisque ac. Ut vestibulum mauris sit amet leo hendrerit
-              congue.
-              Sed feugiat quam nulla, id tempor neque rutrum in.</div>
-          </div>
-          <div class="menu">Nagrody
-            <div class="SubMenu">
-              <ol>
-                <li>Coffee</li>
-                <li>Tea</li>
-                <li>Milk</li>
-              </ol>
-            </div>
+          <div id="kalendarz"></div>
+          <br>
+        </div>
+        <div class="menu">Aktualości
+          <div class="SubMenu">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            In mollis tortor nibh, sed fermentum quam scelerisque ac. Ut vestibulum mauris sit amet leo hendrerit
+            congue.
+            Sed feugiat quam nulla, id tempor neque rutrum in.</div>
+        </div>
+        <div class="menu">Nagrody
+          <div class="SubMenu">
+            <ol>
+              <li>Coffee</li>
+              <li>Tea</li>
+              <li>Milk</li>
+            </ol>
           </div>
         </div>
-      
       </div>
 
-      <!--********************************************************FOOTER*******************************************************************************-->
-
-      <footer class="footer col">Konrad Gaj</footer>
-
     </div>
+
+    <!--********************************************************FOOTER*******************************************************************************-->
+
+    <footer class="footer col">Konrad Gaj</footer>
+
+  </div>
   </div>
 
 </body>

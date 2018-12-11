@@ -3,7 +3,6 @@
 $(document).ready(function () {
 
 
-
     var AnimateAccordion = {
         easing: "easeInOutCirc",
         duration: 1000,
@@ -313,20 +312,5 @@ $(document).ready(function () {
 
     $("#kalendarz").datepicker();
 
-     
-    
-    $("#left_bar").sortable({
-        revert: true,
-        connectWith: '#right_bar'
-    }).disableSelection();
-    $("#right_bar").sortable({
-        connectWith: '#left_bar',
-        revert: true,
-    }).disableSelection();
-    
-  
-
-      
-    
 
 });
